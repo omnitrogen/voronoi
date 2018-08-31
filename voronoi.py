@@ -5,8 +5,9 @@ import pygame
 from pygame.locals import QUIT
 
 pygame.init()
-surf = pygame.display.set_mode((400, 400))
-surf.fill((10, 10, 10))
+size = (400, 400)
+surf = pygame.display.set_mode((size[0], size[1]))
+surf.fill((100, 100, 100))
 points = []
 pygame.display.set_caption('Voronoi Diagram')
 
@@ -16,7 +17,7 @@ while True:
             posx, posy = pygame.mouse.get_pos()
             points.append([[posx, posy], (random.randint(1, 254), random.randint(1, 254), random.randint(1, 254))])
             pygame.draw.circle(surf, (255, 255, 255), (posx, posy), 5, 1)
-            for x, y in [(x, y) for x in range(surf.get_size()[0]) for y in range(surf.get_size()[1])]:
+            for x, y in [(x, y) for x in range(size[0]) for y in range(size[1])]:
                 if surf.get_at((x, y))[:-1] == (255, 255, 255):
                     pass
                 else:
