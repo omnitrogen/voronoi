@@ -18,9 +18,7 @@ while True:
             points.append([[posx, posy], (random.randint(1, 254), random.randint(1, 254), random.randint(1, 254))])
             pygame.draw.circle(surf, (255, 255, 255), (posx, posy), 5, 1)
             for x, y in [(x, y) for x in range(size[0]) for y in range(size[1])]:
-                if surf.get_at((x, y))[:-1] == (255, 255, 255):
-                    pass
-                else:
+                if surf.get_at((x, y))[:-1] != (255, 255, 255):
                     surf.set_at((x, y), min([(math.sqrt((x - i[0][0])**2 + (y - i[0][1])**2), i[1]) for i in points])[1])
 
         if event.type == QUIT:
